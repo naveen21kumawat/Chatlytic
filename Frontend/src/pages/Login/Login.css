@@ -51,5 +51,11 @@
   gap: 5px;
 }
 .login-toggle{
-
+font-size: 13px;
+color: #5c5c5c;
+}
+.login-toggle span{
+  font-weight: 500;
+  color: #077EFF;
+  cursor: pointer;
 }
