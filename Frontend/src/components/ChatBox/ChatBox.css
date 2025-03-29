@@ -1,24 +1,24 @@
-.chat-box{
+.chat-box {
   height: 75vh;
   position: relative;
   background-color: #f1f5ff;
 }
-.chat-user{
+.chat-user {
   display: flex;
   padding: 10px 15px;
   align-items: center;
   gap: 10px;
   border-bottom: 1px solid #c6c6c6;
 }
-.chat-user img{
+.chat-user img {
   width: 25px;
   border-radius: 50px;
 }
-.chat-user img:first-child{
+.chat-user img:first-child {
   width: 38px;
   aspect-ratio: 1/1;
 }
-.chat-user p{
+.chat-user p {
   flex: 1;
   font-weight: 500;
   font-size: 20px;
@@ -26,4 +26,94 @@
   display: flex;
   align-items: center;
   gap: 5px;
+}
+.chat-input {
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.chat-input img {
+  width: 30px;
+  cursor: pointer;
+}
+.chat-input label {
+  display: flex;
+}
+.chat-input label img {
+  width: 22px;
+}
+.chat-input input {
+  /* padding: 10px 20px; */
+  flex: 1;
+  outline: none;
+  border: none;
+}
+
+.chat-msg {
+  height: calc(100% - 70px);
+  padding-bottom: 50px;
+  display: flex;
+  /* overflow: hidden; */
+  /* justify-content: center; */
+  overflow-y: scroll;
+  flex-direction: column-reverse;
+}
+.s-msg div img,
+.r-msg div img {
+  width: 27px;
+  aspect-ratio: 1/1;
+  border-radius: 50px;
+}
+.s-msg,
+.r-msg {
+  display: flex;
+
+  gap: 5px;
+  padding: 0% 15px;
+}
+.r-msg {
+  display: flex;
+  align-items: end;
+  justify-content: start;
+
+  flex-direction: row-reverse;
+  /* justify-content: right; */
+  /* margin-left: 0px; */
+}
+.s-msg{
+  display: flex;
+  flex-direction: row-reverse;
+
+  align-items: end;
+  justify-content: end;
+}
+.msg {
+  color: white;
+  background-color: #077eff;
+  padding: 9px;
+  max-width: 200px;
+  font-size: 11px;
+  margin-bottom: 30px;
+}
+.s-msg .msg {
+  border-radius: 8px 8px 0px 8px;
+}
+.r-msg .msg {
+  border-radius: 8px 8px 8px 0px;
+}
+.s-msg div,
+.r-msg div {
+  text-align: center;
+  font-size: 12px;
+}
+.msg-img{
+  max-width: 266px;
+  border-radius: 20px;
+  margin-bottom: 8px;
 }
