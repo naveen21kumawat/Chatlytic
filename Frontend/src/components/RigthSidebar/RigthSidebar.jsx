@@ -4,7 +4,9 @@ import './RightSidebar.css'
 
 const RigthSidebar = () => {
   return (
-    <div>RigthSidebar</div>
+    <>
+    
+    </>
   )
 }
 
