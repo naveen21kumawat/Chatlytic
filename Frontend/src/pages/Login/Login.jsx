@@ -6,34 +6,77 @@ import {
   DATABSE_ID,
   COLLECTION_ID_MESSAGES,
 } from "../../config/appWriteConfig";
+import {Trash2} from 'react-feather'
 
+import { ID, Query } from "appwrite";
 function Login() {
   const [messages, setMessages] = useState([]);
+  const [messageBody, setMessageBody] = useState("");
 
   const [currState, setCurrState] = useState("Sign up");
   useEffect(() => {
     getMessages();
   }, []);
-  console.log("Hell0 my name is naveen kumawat");
 
   const getMessages = async () => {
     const response = await databases.listDocuments(
       DATABSE_ID,
-      COLLECTION_ID_MESSAGES
+      COLLECTION_ID_MESSAGES,
+      [Query.orderDesc("$createdAt"), Query.limit(20)]
     );
-    console.log(response);
+    console.log(" MY Response ", response.documents);
     setMessages(response.documents);
   };
 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let payload = {
+      body: messageBody,
+    };
+    const response = await databases.createDocument(
+      DATABSE_ID,
+      COLLECTION_ID_MESSAGES,
+      ID.unique(),
+      payload
+    );
+    console.log("Response", response);
+    setMessages([response, ...messages]);
+    setMessageBody("");
+  };
+
+  const handleDelete=async(message_id)=>{
+    databases.deleteDocument(DATABSE_ID,COLLECTION_ID_MESSAGES,message_id)
+    setMessages(prevState=> messages.filter(message => message.$id !== message_id))
+  }
+
   return (
     <>
+    <div className="msgBox">
+      {messages.map((msg) => (
+        
+        <div key={msg.$id} className="messageBox">
+          <div>
+            <span>{msg.body}</span>
+            <br />
+            <span>{Date(msg.$createdAt)}</span>
+            <Trash2 className="deleteButton"onClick={()=>{handleDelete(msg.$id)}}/>
+          
+          </div>
+          </div>
+      ))}
+      </div>
       <div className="login">
         <img src={assets.logo_big} alt="" className="logo" />
-        <form action="" className="login-form">
+        <form action="" className="login-form" onSubmit={handleSubmit}>
           <h2>{currState}</h2>
           {currState === "Sign up" ? (
             <input
               type="text"
+              onChange={(e) => {
+                setMessageBody(e.target.value);
+              }}
+              value={messageBody}
               placeholder="username"
               className="form-input"
               required
@@ -71,7 +114,6 @@ function Login() {
           </div>
         </form>
       </div>
-  
     </>
   );
 }
