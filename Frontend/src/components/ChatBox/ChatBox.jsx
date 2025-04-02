@@ -8,7 +8,7 @@ function ChatBox() {
       <div className="chat-user">
         <img src={assets.profile_img} alt="" />
         <p>
-          Richard SanFord <img className="dot" src={assets.green_dot} alt="" />
+          Naveen Kumawat<img className="dot" src={assets.green_dot} alt="" />
         </p>
         <img src={assets.help_icon} className="help" alt="" />
       </div>

@@ -29,7 +29,7 @@ function LeftSidebar() {
             <div key={index} className="friends">
               <img src={assets.profile_img} alt="" />
               <div>
-                <p>Richard SanFord</p>
+                <p>Naveen Kumawat</p>
                 <span>Hello , How Are You?</span>
               </div>
             </div>
