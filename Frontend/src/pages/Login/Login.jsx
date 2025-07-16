@@ -14,20 +14,23 @@ function Login() {
   const [messageBody, setMessageBody] = useState("");
 
   const [currState, setCurrState] = useState("Sign up");
+ 
   useEffect(() => {
-    getMessages();
-  }, []);
-
-  const getMessages = async () => {
+    
+    
+    const getMessages = async () => {
     const response = await databases.listDocuments(
       DATABSE_ID,
       COLLECTION_ID_MESSAGES,
       [Query.orderDesc("$createdAt"), Query.limit(20)]
     );
     console.log(" MY Response ", response.documents);
+    console.log("")
     setMessages(response.documents);
   };
-
+  
+  getMessages();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
